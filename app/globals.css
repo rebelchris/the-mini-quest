@@ -4,9 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Warm, minimal color palette */
-  --background: oklch(0.99 0.005 85); /* Warm off-white */
-  --foreground: oklch(0.25 0.01 60); /* Deep charcoal */
+  /* More sparkly, vibrant color palette with gradient background */
+  --background: oklch(0.98 0.01 85); /* Slightly warmer base */
+  --foreground: oklch(0.25 0.01 60);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.25 0.01 60);
   --popover: oklch(1 0 0);
@@ -17,15 +17,16 @@
   --secondary-foreground: oklch(0.25 0.01 60);
   --muted: oklch(0.96 0.01 85);
   --muted-foreground: oklch(0.55 0.01 60);
-  --accent: oklch(0.68 0.15 45); /* Warm orange accent */
+  --accent: oklch(0.65 0.18 35); /* More vibrant orange */
   --accent-foreground: oklch(0.99 0.005 85);
+  --accent-secondary: oklch(0.6 0.15 180); /* Playful teal */
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0.005 85);
   --border: oklch(0.92 0.01 85);
   --input: oklch(0.92 0.01 85);
-  --ring: oklch(0.68 0.15 45);
-  --chart-1: oklch(0.68 0.15 45);
-  --chart-2: oklch(0.6 0.118 184.704);
+  --ring: oklch(0.65 0.18 35);
+  --chart-1: oklch(0.65 0.18 35);
+  --chart-2: oklch(0.6 0.15 180);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
@@ -37,7 +38,7 @@
   --sidebar-accent: oklch(0.96 0.01 85);
   --sidebar-accent-foreground: oklch(0.25 0.01 60);
   --sidebar-border: oklch(0.92 0.01 85);
-  --sidebar-ring: oklch(0.68 0.15 45);
+  --sidebar-ring: oklch(0.65 0.18 35);
 }
 
 .dark {
@@ -53,8 +54,9 @@
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.68 0.15 45);
+  --accent: oklch(0.68 0.18 35);
   --accent-foreground: oklch(0.985 0 0);
+  --accent-secondary: oklch(0.65 0.15 180);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
   --border: oklch(0.269 0 0);
@@ -120,12 +122,49 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    /* Add subtle gradient background for sparkle */
+    background: linear-gradient(135deg, oklch(0.98 0.02 85) 0%, oklch(0.99 0.015 180) 50%, oklch(0.98 0.02 35) 100%);
+    background-attachment: fixed;
   }
 
-  /* Add smooth scrolling for better UX */
   html {
     scroll-behavior: smooth;
   }
+}
+
+/* Add scroll animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll animation utility classes */
+.animate-on-scroll {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  opacity: 0;
+  animation: scaleIn 0.5s ease-out forwards;
 }
