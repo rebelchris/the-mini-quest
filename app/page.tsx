@@ -231,7 +231,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mx-auto flex max-w-6xl gap-6 lg:gap-8">
+        <div className="mx-auto flex justify-center gap-6 lg:gap-8">
           {/* Sidebar - hidden on mobile, shown on lg+ */}
           <aside className="hidden w-64 shrink-0 lg:block">
             <div className="sticky top-6 space-y-6 rounded-2xl border border-border/50 bg-background/95 p-4 shadow-lg backdrop-blur-md">
